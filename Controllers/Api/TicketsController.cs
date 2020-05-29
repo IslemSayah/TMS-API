@@ -5,6 +5,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TMS_API.Models;
+using TMS_API.ViewModels;
+using AutoMapper;
+using System.IO;
+using System.Configuration;
 
 namespace TMS_API.Controllers.Api
 {
@@ -41,18 +45,50 @@ namespace TMS_API.Controllers.Api
 
 
         [HttpPost]
-        public IHttpActionResult CreateTicket(Ticket Ticket)
+        public IHttpActionResult CreateTicket(TicketViewModel ticket)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
+            // Use Namespace called :  System.IO
 
+            var Ticket = new Ticket();
             Ticket.Id = Guid.NewGuid();
+          
+           
+            foreach (System.Web.HttpPostedFileBase f in ticket.Files)
+            {
+                var FilePath = new TicketFile();
+                FilePath.Id = Guid.NewGuid();
+                FilePath.TicketId = Ticket.Id;
+           
+                string FileName = Path.GetFileNameWithoutExtension(f.FileName);
+
+            //To Get File Extension  
+            string FileExtension = Path.GetExtension(f.FileName);
+
+            //Add Current Date To Attached File Name  
+            FileName = DateTime.Now.ToString("yyyyMMdd") + "-" + FileName.Trim() + FileExtension;
+
+            //Get Upload path from Web.Config file AppSettings.  
+            string UploadPath = ConfigurationManager.AppSettings["C:/Users/Utilisateur/source/repos/TMS-API/Files/"].ToString();
+
+            //Its Create complete path to store in server.  
+            FilePath.FilePath = UploadPath + FileName;
+
+            //To copy and save file into server.  
+             f.SaveAs(FilePath.FilePath);
+                _context.TicketFiles.Add(FilePath);
+                _context.SaveChanges();
+            
+            }
+            Ticket = Mapper.Map<TicketViewModel, Ticket>(ticket);
             Ticket.CreationDateTime = DateTime.Now;
             DateTime DueDate = DateTime.Now.AddMonths(1);
             Ticket.DueDate = DueDate;
             Ticket.IsOverdue = false;
             var number = _context.Tickets.Count();
             Ticket.Number = number;
+           
             _context.Tickets.Add(Ticket);
             _context.SaveChanges();
 
@@ -170,6 +206,7 @@ namespace TMS_API.Controllers.Api
             var ticket = _context.Tickets.SingleOrDefault(t => t.Id == TicketId);
             if (ticket == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
+
 
             ticket.TicketStatus = TicketWorkflow.OpenedTicket;
             ticket.AssignedStaffId = StaffId;
