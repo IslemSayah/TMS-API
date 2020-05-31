@@ -17,7 +17,7 @@ namespace TMS_API.Models
   
       
         [ForeignKey("User")]
-        public Guid UserId { get; set; }
+        public Guid? UserId { get; set; }
        
         [ForeignKey("License")]
         public Guid? LicenseId { get; set; }

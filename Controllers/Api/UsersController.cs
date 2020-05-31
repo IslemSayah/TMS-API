@@ -79,6 +79,7 @@ namespace TMS_API.Controllers.Api
                 return BadRequest(ModelState);
             }
 
+            user.Id = Guid.NewGuid();
             db.Users.Add(user);
 
             try

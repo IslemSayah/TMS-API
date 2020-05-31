@@ -353,6 +353,18 @@
     <Compile Include="Migrations\202005281519279_addfiles3.designer.cs">
       <DependentUpon>202005281519279_addfiles3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005301558106_dfgdfg.cs" />
+    <Compile Include="Migrations\202005301558106_dfgdfg.designer.cs">
+      <DependentUpon>202005301558106_dfgdfg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005310918249_fortesting.cs" />
+    <Compile Include="Migrations\202005310918249_fortesting.designer.cs">
+      <DependentUpon>202005310918249_fortesting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005310920193_islem.cs" />
+    <Compile Include="Migrations\202005310920193_islem.designer.cs">
+      <DependentUpon>202005310920193_islem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\Department.cs" />
@@ -532,6 +544,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005281519279_addfiles3.resx">
       <DependentUpon>202005281519279_addfiles3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005301558106_dfgdfg.resx">
+      <DependentUpon>202005301558106_dfgdfg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005310918249_fortesting.resx">
+      <DependentUpon>202005310918249_fortesting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005310920193_islem.resx">
+      <DependentUpon>202005310920193_islem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
