@@ -19,8 +19,8 @@ namespace TMS_API.Models
         [ForeignKey("User")]
         public Guid? UserId { get; set; }
        
-        [ForeignKey("License")]
-        public Guid? LicenseId { get; set; }
+       /* [ForeignKey("License")]
+        public Guid? LicenseId { get; set; }*/
  
         [DefaultValue("NewTicket")]
         public TicketWorkflow? TicketStatus { get; set; }
@@ -43,46 +43,47 @@ namespace TMS_API.Models
     
         [DefaultValue("false")]
         public bool? IsOverdue { get; set; }
-    
-      
- 
-        public Guid? AssignedStaffId { get; set; }
-     
-       
-      
-        public Guid? LastRespondentId { get; set; }
-     
-   
-      
-        public Guid? EditorStaffId { get; set; }
 
-        [DefaultValue("None")]
-  
-        public Guid? HelpTopicId { get; set; }
-      
-        public bool? IsCreatedByStaff { get; set; }
-    
-        
-     
-        public Guid? CreatorStaffId { get; set; }
 
-        
+
+        /*  public Guid? AssignedStaffId { get; set; }
+
+
+
+          public Guid? LastRespondentId { get; set; }
+
+
+
+          public Guid? EditorStaffId { get; set; }
+
+          [DefaultValue("None")]
+
+          public Guid? HelpTopicId { get; set; }
+
+          public bool? IsCreatedByStaff { get; set; }
+
+
+
+          public Guid? CreatorStaffId { get; set; }*/
+
+
         //=============================================
-        
+
+        /* 
+         [ForeignKey("HelpTopicId")]
+         public HelpTopic HelpTopic { get; set; }
+         [ForeignKey("AssignedStaffId")]
+         public StaffMember AssignedStaff { get; set; }
+         [ForeignKey("LastRespondentId")]
+         public StaffMember LastRespondent { get; set; }
+         [ForeignKey("CreatorStaffId")]
+         public StaffMember CreatorStaff { get; set; }
+         [ForeignKey("EditorStaffId")]
+         public StaffMember EditorStaff { get; set; }
+         [ForeignKey("LicenseId")]
+         public License License { get; set; }*/
         [ForeignKey("UserId")]
         public User User { get; set; }
-        [ForeignKey("HelpTopicId")]
-        public HelpTopic HelpTopic { get; set; }
-        [ForeignKey("AssignedStaffId")]
-        public StaffMember AssignedStaff { get; set; }
-        [ForeignKey("LastRespondentId")]
-        public StaffMember LastRespondent { get; set; }
-        [ForeignKey("CreatorStaffId")]
-        public StaffMember CreatorStaff { get; set; }
-        [ForeignKey("EditorStaffId")]
-        public StaffMember EditorStaff { get; set; }
-        [ForeignKey("LicenseId")]
-        public License License { get; set; }
 
 
 

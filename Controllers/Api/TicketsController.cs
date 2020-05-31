@@ -50,6 +50,9 @@ namespace TMS_API.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
+            var user = _context.Users.SingleOrDefault();
+            var staffmember = _context.StaffMembers.SingleOrDefault();
+
 
 
             /* foreach (System.Web.HttpPostedFileBase f in ticket.Files)
@@ -81,7 +84,8 @@ namespace TMS_API.Controllers.Api
             //var Ticket = Mapper.Map<TicketViewModel, Ticket>(ticket);
             var Ticket = ticket;
             Ticket.Id = Guid.NewGuid();
-            Ticket.UserId = Guid.NewGuid();
+            Ticket.UserId = user.Id;
+        
             Ticket.CreationDateTime = DateTime.Now;
             DateTime DueDate = DateTime.Now.AddMonths(1);
             Ticket.DueDate = DueDate;
@@ -140,7 +144,7 @@ namespace TMS_API.Controllers.Api
 
         }
 
-        [HttpGet]
+      /*  [HttpGet]
         public IEnumerable<Ticket> GetTicketsByHelpTopicId(Guid HelpTopicId) {
 
             var tickets = _context.Set<Ticket>().Where(t => t.HelpTopicId == HelpTopicId);
@@ -148,7 +152,7 @@ namespace TMS_API.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return tickets;
-         }
+         }*/
 
         [HttpPost]
         public IHttpActionResult AddTicketThreadMessage(TicketThreadMessage message)
@@ -188,7 +192,7 @@ namespace TMS_API.Controllers.Api
         
         //StaffApi==========================
         
-        [HttpPost]
+     /*   [HttpPost]
         public IEnumerable<Ticket> GetTicketAssigned(Guid MemberId)
         {
             var tickets = _context.Set<Ticket>().Where(t => t.AssignedStaffId == MemberId);
@@ -197,10 +201,10 @@ namespace TMS_API.Controllers.Api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return tickets;
-        }
+        }*/
 
 
-        [HttpPut]
+      /*  [HttpPut]
         public IHttpActionResult OpenTicket(Guid TicketId, Guid StaffId)
         {
             var ticket = _context.Tickets.SingleOrDefault(t => t.Id == TicketId);
@@ -215,7 +219,7 @@ namespace TMS_API.Controllers.Api
             _context.SaveChanges();
 
             return Created(new Uri(Request.RequestUri + "/" + ticket.Id), ticket);
-        }
+        }*/
 
         [HttpPost]
         public IHttpActionResult AddInternalNote(Guid TicketId , InternalNote Note, Guid StaffId)

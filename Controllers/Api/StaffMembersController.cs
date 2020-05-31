@@ -78,6 +78,7 @@ namespace TMS_API.Controllers.Api
             {
                 return BadRequest(ModelState);
             }
+            staffMember.Id = Guid.NewGuid();
 
             db.StaffMembers.Add(staffMember);
 

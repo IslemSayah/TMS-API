@@ -365,6 +365,14 @@
     <Compile Include="Migrations\202005310920193_islem.designer.cs">
       <DependentUpon>202005310920193_islem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005310928464_staffmember.cs" />
+    <Compile Include="Migrations\202005310928464_staffmember.designer.cs">
+      <DependentUpon>202005310928464_staffmember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005310945422_ddd.cs" />
+    <Compile Include="Migrations\202005310945422_ddd.designer.cs">
+      <DependentUpon>202005310945422_ddd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\Department.cs" />
@@ -553,6 +561,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005310920193_islem.resx">
       <DependentUpon>202005310920193_islem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005310928464_staffmember.resx">
+      <DependentUpon>202005310928464_staffmember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005310945422_ddd.resx">
+      <DependentUpon>202005310945422_ddd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

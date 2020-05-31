@@ -33,13 +33,13 @@ namespace TMS_API.Models
         [StringLength(255)]
         public string Password { get; set; }
  
-        public Status Status { get; set; }
+        public Status? Status { get; set; }
   
-        public bool IsAdministrator { get; set; }
+        public bool? IsAdministrator { get; set; }
      
-        public bool IsOnVacation { get; set; }
+        public bool? IsOnVacation { get; set; }
        
-        public bool IsLoggedIn { get; set; }
+        public bool? IsLoggedIn { get; set; }
         public Guid? StaffGroupId { get; set; }
         public Guid? DepartmentId { get; set; }
     }
